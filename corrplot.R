@@ -6,6 +6,7 @@ cuisines <- scan("../cuisine_indices.txt", what="", sep='\n')
 simmatrix = as.matrix(sim)
 colnames(simmatrix) <- cuisines
 rownames(simmatrix) <- cuisines
-png(filename="../cuisine_similarity_map.png")
-corrplot(simmatrix, as.corr=FALSE)
+jpeg(filename="../cuisine_similarity_map.jpeg", width=2048, height=2048, units="px", quality=100, res=150)
+#corrplot(simmatrix, as.corr=FALSE)
+corrplot(simmatrix,method="shade",tl.cex=0.5,order="hclust",is.cor=FALSE,type="lower")
 dev.off()
