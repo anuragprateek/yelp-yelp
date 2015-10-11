@@ -13,7 +13,6 @@ from sklearn import svm
 # Initialize the algorithm class
 alg = LogisticRegression(penalty='l1', random_state=1)
 #alg = svm.SVC()
-
 #alg = RandomForestClassifier(n_jobs=1)
 
 trainlabel = []
@@ -32,7 +31,6 @@ X = traindata[:546]
 print X
 print type(X)
 print X.shape
-
 
 numofreviews = []
 
@@ -105,12 +103,13 @@ for x in actualtestdata[1:]:
 '''
 Xt = traindata[546:]
 Xt = np.hstack((Xt, avgr_tst))
+Xt = np.hstack((Xt, nor_tst))
 Xt = np.hstack((Xt, cuio_tst))
 Xt = np.hstack((Xt, cuio2_tst))
 
 pred = alg.predict(Xt)
 
 print type(pred), pred.shape
-with open('CapstoneLogReg2.txt', 'w') as f:
+with open('CapstoneForest.txt', 'w') as f:
 	for y in pred:
 		f.write('%s\n' %y)
