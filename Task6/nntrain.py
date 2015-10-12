@@ -1,4 +1,5 @@
 import os
+import cPickle
 from pybrain.datasets            import ClassificationDataSet
 from pybrain.utilities           import percentError
 from pybrain.tools.shortcuts     import buildNetwork
@@ -10,16 +11,13 @@ from pybrain.tools.customxml.networkreader import NetworkReader
 traindata = []
 trainlabel = []
 
-import cPickle
 f = file('InputSentenceVectors.save', 'rb')
 traindata = cPickle.load(f)
 f.close()
-#print traindata
 
 f = file('InputSentenceVectors_Labels.save', 'rb')
 trainlabel = cPickle.load(f)
 f.close()
-#print trainlabel
 
 alldata = ClassificationDataSet(100, 1, nb_classes=2)
 
